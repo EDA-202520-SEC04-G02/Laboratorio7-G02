@@ -42,9 +42,11 @@ def get_node(root, key):
     else:                 
         return get_node(root["right"], key)
     
-def get(my_bst,key):
-    
-    return get_node(my_bst["root"],key)
+def get(my_bst, key):
+    node = get_node(my_bst["root"], key)
+    if node is None:
+        return None
+    return bst.get_value(node)
 
 def size_tree(root):
     if root is None:
@@ -62,10 +64,7 @@ def contains(my_bst,key):
         return False
     
 def is_empty(my_bst):
-    if my_bst["root"] is None:
-        return False
-    else:
-        return True
+    return my_bst["root"] is None
     
 def key_set_tree(root):
     keys = sl.new_list()
@@ -141,6 +140,9 @@ def get_max_node(root):
         return bst.get_key(root)
     
     return get_max_node(root["right"])
+
+def get_max(my_bst):
+    return get_max_node(my_bst["root"])
 
 def delete_min_tree(root):
     
